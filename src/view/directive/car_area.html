@@ -1,4 +1,4 @@
-<div>
+<div class="car-area-directive">
     <div class="weui-cells weui-cells_form" id="car-area-form">
         <div class="weui-cell">
             <div class="weui-cell__bd edit-cell">
@@ -9,6 +9,9 @@
                 <button class="weui-vcode-btn commit" ng-click="commit()">确定</button>
             </div>
         </div>
+    </div>
+    <div class="tips">
+        <i class="weui-icon-info-circle"></i><label>无法识别？请试试输入车牌号</label>
     </div>
     <div ng-if="areaShow" class="area-keyboard">
         <div class="weui-mask weui-animate-fade-in" ng-click="closeArea()"></div>

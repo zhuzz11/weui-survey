@@ -1,0 +1,21 @@
+<div>
+    <div class="weui-cells weui-cells_form" id="car-area-form">
+        <div class="weui-cell">
+            <div class="weui-cell__bd edit-cell">
+                <span ng-click="openArea()">{{prefix}}<label>&#9660</label></span>
+                <input id="car-area-input" class="weui-input" required pattern="REG_CAR" type="text" placeholder="请输入车牌号" emptyTips="请输入车牌号" notMatchTips="车牌号格式不正确">
+            </div>
+            <div class="weui-cell__ft">
+                <button class="weui-vcode-btn commit" ng-click="commit()">确定</button>
+            </div>
+        </div>
+    </div>
+    <div ng-if="areaShow" class="area-keyboard">
+        <div class="weui-mask weui-animate-fade-in" ng-click="closeArea()"></div>
+        <div class="weui-grids area-keyboard weui-animate-slide-up">
+            <a href="javascript:;" class="weui-grid" ng-repeat="item in areaList">
+                <p class="weui-grid__label" ng-class="{'select':prefix == item.name}" ng-click="choiceItem(item)">{{item.name}}</p>
+            </a>
+        </div>
+    </div>
+</div>

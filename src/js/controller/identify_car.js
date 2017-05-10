@@ -5,7 +5,10 @@ angular.module("ctApp")
 		"$apis",
 		function($scope, $state, $apis) {
 
+			$scope.prefix = "";
 
-
+			$scope.send = function(carno){
+				alert(carno);
+			}
 		}
 	]);

@@ -5,7 +5,7 @@
 angular.module("ctApp").config(["$stateProvider", "$urlRouterProvider", "$locationProvider", function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise("/");
-    $urlRouterProvider.when("/", "/survey");
+    $urlRouterProvider.when("/", "/route");
 
     $stateProvider
         .state('attention', {
@@ -28,5 +28,12 @@ angular.module("ctApp").config(["$stateProvider", "$urlRouterProvider", "$locati
             url: '/survey',
             title: "自助查勘",
             templateUrl: 'view/controller/survey.html'
+        });
+    $stateProvider
+        .state('route', {
+            cache: false,
+            url: '/route',
+            title: "路由页面",
+            templateUrl: 'view/controller/route.html'
         });
 }]);

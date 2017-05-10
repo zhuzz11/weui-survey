@@ -52,6 +52,10 @@ angular.module('ctApp')
 
                 scope.commit = function(){
                     var carNo = $("#car-area-input").val();
+                    if(carNo == ""){
+                        weui.topTips('请输入车牌号');
+                        return;
+                    }
                     if (reg_CAR.test(carNo)) {
                         scope.send({carNo:carNo});
                     }else{

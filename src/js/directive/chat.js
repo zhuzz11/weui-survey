@@ -120,21 +120,27 @@ angular.module('ctApp')
 
                 scope.changeChatType = function() {
                     scope.textChat = !scope.textChat;
-                    if (!scope.textChat) {//切换录音，首先要用户授权
+                    return;
+                    if (scope.textChat) {//切换录音，首先要用户授权
                         if (!localStorage.rainAllowRecord || localStorage.rainAllowRecord !== 'true') {
                             wx.startRecord({
                                 success: function() {
+                                    scope.textChat = false;
                                     localStorage.rainAllowRecord = 'true';
                                     wx.stopRecord();
                                 },
                                 cancel: function() {
-                                    scope.changeChatType();
+                                    scope.textChat = true;
                                 },
                                 fail: function(){
-                                    scope.changeChatType();
+                                    scope.textChat = false;
+                                    scope.$apply();
+                                    alert("录音目前不可用");
                                 }
                             });
                         }
+                    }else{
+                        scope.textChat = !scope.textChat;
                     }
                 };
 

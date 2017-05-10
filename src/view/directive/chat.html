@@ -10,7 +10,12 @@
             <div class="chat-record" ng-repeat="item in chatRecords">
                 <div class="chat-time">{{item.time}}</div>
                 <div class="chat-text self-text" ng-if="item.userType==1">
-                    <div><span>{{item.text}}</span></div>
+                    <div ng-if="item.msgType==1">
+                        <span>{{item.text}}</span>
+                    </div>
+                    <div ng-if="item.msgType==2">
+                        <span class="voice-msg" ng-click="playVoice(item.voiceId)"><img src="images/chat/voice-msg.png"></span>
+                    </div>
                     <span class="user-type">我</span>
                 </div>
                 <div class="chat-text other-text" ng-if="item.userType==2">

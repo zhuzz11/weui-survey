@@ -1,7 +1,11 @@
 <div ng-controller="identifyCar" class="identify-car">
-	<div class="photo-tip">请点击并对准车牌拍照识别</div>
-    <div class="photo-box">
+	<div class="photo-tip" ng-if="!identifyFailed">请点击并对准车牌拍照识别</div>
+	<div class="photo-err" ng-if="identifyFailed">
+		<div class="result"><i class="weui-icon-warn"></i>识别失败</div>
+		<div class="result-tip">车牌拍摄图片不清晰，请重新拍摄</div>
+	</div>
+    <div class="photo-box" ng-click="uploadImg()">
     	<img src="images/photo.png">
     </div>
-    <car-area prefix="prefix" send="send(carNo)"></car-area>
+    <car-area ng-if="identifyFailed" prefix="prefix" send="send(carNo)"></car-area>
 </div>

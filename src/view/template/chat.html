@@ -1,0 +1,31 @@
+<div>
+    <div class="slide_logo" ng-show="!onChat">
+        <div class="default_cmt j_article_cmnt_count" ng-click="openChat()"></div>
+    </div>
+    <div class="chat-box" ng-show="onChat">
+        <div class="chat-header">
+            <div class="cmt_close" ng-click="closeChat()"></div>
+        </div>
+        <div class="chat-content">
+            <div class="chat-record" ng-repeat="item in chatRecords">
+                <div class="chat-time">{{item.time}}</div>
+                <div class="chat-text self-text" ng-if="item.userType==1">
+                    <div><span>{{item.text}}</span></div>
+                    <span class="user-type">我</span>
+                </div>
+                <div class="chat-text other-text" ng-if="item.userType==2">
+                    <span class="user-type">专家</span>
+                    <div><span>{{item.text}}</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <span class="msg-type" ng-class="{'keyboard-type':!textChat}" ng-click="changeChatType()"></span>
+            <input type="text" class="text-input" ng-model="textValue" ng-show="textChat" />
+            <input type="button" class="voice-input" ng-show="!textChat" value="按住 说话" ng-active="showTip()" ng-inactive="hideTip()" />
+            <a class="msg-send-btn" ng-click="send()" ng-show="textChat">发送</a>
+        </div>
+    </div>
+    <div class="page_mask" ng-show="onChat">
+    </div>
+</div>

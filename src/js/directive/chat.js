@@ -53,6 +53,7 @@ angular.module('ctApp')
                     msgType: 2,
                     text: "",
                     voiceId: "12324",
+                    voiceSecond: 12,
                     time: "09-21 09:24"
                 }];
 
@@ -159,18 +160,23 @@ angular.module('ctApp')
 
                 };
 
-                var t;
+                var t,t2;
                 var loading = null;
                 var cancelTimeout = function() {
                     if (t) {
                         clearTimeout(t);
                         t = null;
                     }
+                    if(t2){
+                        clearInterval(t2);
+                        t2 = null;
+                    }
                 };
 
-                var voiceId = null;
+                var voiceId = null, voiceSecond = 0;
                 $(".voice-input")[0].addEventListener('touchstart', function(e) {
                     voiceId = null;
+                    voiceSecond = 0;
                     var self = this;
                     $(self).css("backgroundColor", "#ddd");
                     console.log("touch");
@@ -182,6 +188,9 @@ angular.module('ctApp')
                         });
                         //这里开始录音
                         voiceId = "555";
+                        t2 = setInterval(function() {
+                           voiceSecond ++;
+                        }, 1000);
                     }, 500);
                     e.preventDefault();
                     return false;
@@ -197,6 +206,7 @@ angular.module('ctApp')
                             msgType: 2,
                             text: "",
                             voiceId: voiceId,
+                            voiceSecond: voiceSecond,
                             time: new Date().format("MM-dd hh:mm")
                         });
                         scope.$apply();

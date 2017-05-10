@@ -158,7 +158,7 @@ gulp.task('template', function () {
     gulp.src('src/tempfile/temp.html', option)
         .pipe(rename(filename+".html"))
         .pipe(replace("{{name}}",controlname))
-        .pipe(gulp.dest(src + "/view/template/"));
+        .pipe(gulp.dest(src + "/view/controller/"));
     gulp.src('src/tempfile/temp.js', option)
         .pipe(rename(filename+".js"))
         .pipe(replace("{{name}}",controlname))

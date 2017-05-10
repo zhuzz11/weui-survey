@@ -12,14 +12,21 @@ angular.module("ctApp").config(["$stateProvider", "$urlRouterProvider", "$locati
             cache: false,
             url: '/attention',
             title: "关注公众号",
-            templateUrl: 'view/template/attention.html'
+            templateUrl: 'view/controller/attention.html'
         });
 
+    $stateProvider
+        .state('identify', {
+            cache: false,
+            url: '/identify',
+            title: "自助查勘服务",
+            templateUrl: 'view/controller/identify_car.html'
+        });
     $stateProvider
         .state('survey', {
             cache: false,
             url: '/survey',
             title: "自助查勘",
-            templateUrl: 'view/template/survey.html'
+            templateUrl: 'view/controller/survey.html'
         });
 }]);

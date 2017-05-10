@@ -3,7 +3,7 @@ angular.module('ctApp')
         return {
             restrict: "E",
             replace: true,
-            templateUrl: "view/template/chat.html",
+            templateUrl: "view/directive/chat.html",
             scope: {
                 chat: "="
             },

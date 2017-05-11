@@ -45,13 +45,21 @@
     .chat-content {
         height: 200px;
         overflow-y: auto;
+        -webkit-overflow-scrolling : touch;
         overflow-x: hidden;
         font-size: 12px;
         line-height: 1.5;
         color: #333;
         padding: 0 0.7rem;
+        padding-top: .2rem;
         .chat-record {
             margin-bottom: 10px;
+        }
+        .no-record{
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            padding-top: 1rem;
         }
         .chat-time {
             text-align: center;

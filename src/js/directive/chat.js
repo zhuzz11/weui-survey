@@ -8,69 +8,31 @@ angular.module('ctApp')
                 chat: "="
             },
             link: function(scope, element, attrs, ctrl) {
-                scope.chatRecords = [{
-                    userType: 1,
-                    msgType: 1,
+                scope.chatRecords = [];
+                /*scope.chatRecords = [{
+                    userType: 1,//1、自己，2、专家
+                    msgType: 1,//1、文本，2、语音
                     text: "你看这个怎么样你看这个怎么样你看这个怎么样你看这个怎么样你看这个怎么样你看这个怎么样",
-                    time: "09-21 09:24"
-                }, {
-                    userType: 2,
-                    msgType: 1,
-                    text: "不错你看这个怎么样你看这个怎么样你看这个怎么样你看这个怎么样你看这个怎么样",
-                    time: "09-21 09:24"
-                }, {
-                    userType: 1,
-                    msgType: 1,
-                    text: "没有什么意见吗？你看这个怎么样你看这个怎么样你看这个怎么样你看这个怎么样",
-                    time: "09-21 09:24"
-                }, {
-                    userType: 1,
-                    msgType: 1,
-                    text: "说说看，不要紧",
-                    time: "09-21 09:24"
-                }, {
-                    userType: 2,
-                    msgType: 1,
-                    text: "想法十分好",
-                    time: "09-21 09:24"
-                }, {
-                    userType: 1,
-                    msgType: 1,
-                    text: "哟，不错",
-                    time: "09-21 09:24"
-                }, {
-                    userType: 1,
-                    msgType: 1,
-                    text: "谢谢你看这个怎么样你看这个怎么样你看这个怎么样你看这个怎么样你看这个怎么样",
-                    time: "09-21 09:24"
-                }, {
-                    userType: 2,
-                    msgType: 1,
-                    text: "你做的很好你看这个怎么样你看这个怎么样你看这个怎么样你看这个怎么样你看这个怎么样你看这个怎么样你看这个怎么样",
-                    time: "09-21 09:24"
-                }, {
-                    userType: 2,
-                    msgType: 1,
-                    text: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     time: "09-21 09:24"
                 }, {
                     userType: 1,
                     msgType: 2,
-                    text: "",
                     voiceId: "12324",
                     voiceSecond: 12,
                     time: "09-21 09:24"
-                }];
+                }];*/
 
                 scope.openChat = function() {
                     scope.onChat = true;
                     setTimeout(function() {
                         $('.chat-content').scrollTop(100000);
                     }, 100);
+                    $(".survey-page").css("position","fixed");//防止聊天框滚动到上下边界后带动底部页面继续滚动
                 };
 
                 scope.closeChat = function() {
                     scope.onChat = false;
+                    $(".survey-page").css("position","initial");
                 };
 
                 var websocket = null;
@@ -217,7 +179,6 @@ angular.module('ctApp')
                         scope.chatRecords.push({
                             userType: 1,
                             msgType: 2,
-                            text: "",
                             voiceId: voiceId,
                             voiceSecond: voiceSecond,
                             time: new Date().format("MM-dd hh:mm")
@@ -243,6 +204,7 @@ angular.module('ctApp')
                 $(".text-input").bind("keydown keyup", function() {
                     $(this).autosize();
                 }).show();
+
 
             }
         };

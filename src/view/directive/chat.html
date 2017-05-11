@@ -26,6 +26,7 @@
                     <div><span>{{item.text}}</span></div>
                 </div>
             </div>
+            <div ng-if="chatRecords.length == 0" class="no-record">无聊天记录</div>
         </div>
         <div class="chat-footer">
             <span class="msg-type" ng-class="{'keyboard-type':!textChat}" ng-click="changeChatType()"></span>

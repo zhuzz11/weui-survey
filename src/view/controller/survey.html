@@ -1,3 +1,31 @@
-<div ng-controller="surveyEdit" class="car-edit">
+<div ng-controller="surveyEdit" class="survey-page">
+    <div class="photo-tip">
+        <div class="first"><span>拍照时请注意自身安全</span><span class="close-btn" ng-click="closeTip()"></span></div>
+        <div class="second">请按照图例拍照，拍照完成后即可在当前页面查看审核结果</div>
+    </div>
+    <div class="weui-cells">
+        <a class="weui-cell weui-cell_access" href="javascript:;" ng-click="choiceType()">
+            <div class="weui-cell__bd accident">
+                <p>事故情况</p>
+            </div>
+            <div class="weui-cell__ft" id="type-text">根据现场情况选择</div>
+        </a>
+    </div>
+    <div class="survey-card">
+	    <div class="photo-title">查勘影像</div>
+	    <div class="weui-flex">
+	        <div class="weui-flex__item left">
+	        	<img src="images/car.png">
+	        	<div class="desc">全车45含清晰车牌照</div>
+	        </div>
+	        <div class="weui-flex__item right">
+	        	<img src="images/car.png">
+	        	<div class="desc">车辆损失部位</div>
+	        </div>
+	    </div>
+    </div>
+
+
+    <!--聊天directive-->
     <chat></chat>
 </div>

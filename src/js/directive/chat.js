@@ -162,7 +162,7 @@ angular.module('ctApp')
                         });
                         scope.textValue = "";
                         $(".text-input").focus();
-                        $(".text-input").css("height","20px");
+                        $(".text-input").css("height", "20px");
                         setTimeout(function() {
                             $('.chat-content').scrollTop(100000);
                         }, 100);
@@ -243,6 +243,7 @@ angular.module('ctApp')
                 $(".text-input").bind("keydown keyup", function() {
                     $(this).autosize();
                 }).show();
+
             }
         };
     }]);

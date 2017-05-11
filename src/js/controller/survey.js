@@ -10,6 +10,8 @@ angular.module("ctApp")
 				$(".photo-tip").fadeOut();
 			};
 
+			$scope.needMorePhoto = false;
+
 			$scope.choiceType = function() {
 				weui.actionSheet([{
 					label: '被别人划了，有划痕',

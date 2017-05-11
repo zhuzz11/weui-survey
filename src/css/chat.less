@@ -58,31 +58,31 @@
             color: #999;
         }
         .chat-text {
-            padding: 0 36px;
+            padding: 0 38px;
             position: relative;
             div {
                 span {
                     display: inline-block;
                     padding: 7px 10px;
-                    border-radius: 3px;
+                    border-radius: 5px;
                     background-color: #fff;
                     color: #333;
-                    width:auto;
+                    width: auto;
                     max-width: calc(100% - 15px);
-                    word-break:normal;  
-                    white-space:pre-wrap;
-                    word-wrap : break-word;
+                    word-break: normal;
+                    white-space: pre-wrap;
+                    word-wrap: break-word;
                     overflow: hidden;
                 }
-                label{
+                label {
                     font-size: 14px;
                     vertical-align: top;
                     margin-right: 5px;
                     color: #fff;
                 }
-                .voice-msg{
+                .voice-msg {
                     height: 18px;
-                    img{
+                    img {
                         margin-top: -1px;
                     }
                 }
@@ -96,10 +96,21 @@
                 top: 0;
             }
             div {
+                position: relative;
                 span {
-                    background-color: rgba(33, 172, 253, .85);
+                    background-color: #21B6FF;
                     color: #fff;
                     text-align: left;
+                }
+                &:after {
+                    content: '';
+                    position: absolute;
+                    right: -7px;
+                    top: 9px;
+                    width: 0;
+                    height: 0;
+                    border: 4px solid transparent;
+                    border-left-color: #21B6FF;
                 }
             }
         }
@@ -109,6 +120,19 @@
                 position: absolute;
                 left: .1rem;
                 top: 0;
+            }
+            div{
+                position: relative;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    left: -7px;
+                    top: 9px;
+                    width: 0;
+                    height: 0;
+                    border: 4px solid transparent;
+                    border-right-color: #fff;
+                }
             }
         }
         .user-type {
@@ -127,7 +151,8 @@
         padding-bottom: 1px;
         position: relative;
         display: flex;
-        input ,textarea{
+        input,
+        textarea {
             flex: 1;
             height: 29px;
             border: none;
@@ -143,9 +168,10 @@
             margin-right: 80px;
             padding: 5px;
             border-bottom: 1px solid #ccc;
-            resize: none;/**去掉textarea右下角默认的黑点**/
+            resize: none;
+            /**去掉textarea右下角默认的黑点**/
             &:focus {
-                border-bottom: 1px solid rgba(33, 172, 253, .85);
+                border-bottom: 1px solid #21B6FF;
             }
         }
         .voice-input {
@@ -192,13 +218,13 @@
             right: 10px;
             line-height: 30px;
             text-align: center;
-            background-color: rgba(33, 172, 253, .85);
+            background-color: #21B6FF;
             border: 0px solid #fff;
             border-radius: 3px;
             color: #fff;
             font-size: 12px;
             &:active {
-                background-color: rgba(33, 172, 253, .95);
+                background-color: #21A2FF;
             }
         }
     }

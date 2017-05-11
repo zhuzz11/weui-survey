@@ -10,7 +10,7 @@ angular.module("ctApp")
 				$(".photo-tip").fadeOut();
 			};
 
-			$scope.needMorePhoto = false;
+			$scope.needMorePhoto = true;
 
 			$scope.choiceType = function() {
 				weui.actionSheet([{
@@ -41,11 +41,44 @@ angular.module("ctApp")
 				}, ], [{
 					label: '取消',
 					onClick: function() {
-						
+
 					}
 				}], {
 					className: 'custom-classname'
 				});
 			};
+
+
+			$scope.surveyPhoto = [{
+				left: {
+					desc: "全车45含清晰车牌照", //描述
+					descPhotoUrl: "images/car.png", //描述图片地址
+					uploading: true,
+					process: 0, //进度
+					uploaded: false
+				},
+				right: {
+					desc: "车辆损失部位", //描述
+					descPhotoUrl: "images/car.png", //描述图片地址
+					uploading: false,
+					process: 0, //进度
+					uploaded: false
+				}
+			}, {
+				left: {
+					desc: "碰撞物体", //描述
+					descPhotoUrl: "images/car.png", //描述图片地址
+					uploading: true,
+					process: 0, //进度
+					uploaded: false
+				},
+				right: {
+					desc: "车架号", //描述
+					descPhotoUrl: "images/car.png", //描述图片地址
+					uploading: false,
+					process: 0, //进度
+					uploaded: false
+				}
+			}];
 		}
 	]);

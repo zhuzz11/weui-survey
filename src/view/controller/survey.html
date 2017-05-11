@@ -13,24 +13,30 @@
     </div>
     <div class="survey-card">
         <div class="photo-title">查勘影像</div>
-        <div class="weui-flex">
+        <div class="weui-flex" ng-repeat="item in surveyPhoto">
             <div class="weui-flex__item left">
-                <img src="images/car.png">
-                <div class="desc">全车45含清晰车牌照</div>
+                <div>
+                    <img ng-src="{{item.left.descPhotoUrl}}">
+                    <div class="mask" ng-if="!item.left.uploaded">
+                        <span class="take-photo" ng-if="!item.left.uploading"></span>
+                        <div class="progress" ng-if="item.left.uploading">
+                            <span style="width: 20%;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="desc">{{item.left.desc}}</div>
             </div>
             <div class="weui-flex__item right">
-                <img src="images/car.png">
-                <div class="desc">车辆损失部位</div>
-            </div>
-        </div>
-        <div class="weui-flex">
-            <div class="weui-flex__item left">
-                <img src="images/car.png">
-                <div class="desc">碰撞物体</div>
-            </div>
-            <div class="weui-flex__item right">
-                <img src="images/car.png">
-                <div class="desc">车架号</div>
+                <div>
+                    <img ng-src="{{item.right.descPhotoUrl}}">
+                    <div class="mask" ng-if="!item.right.uploaded">
+                        <span class="take-photo" ng-if="!item.right.uploading"></span>
+                        <div class="progress" ng-if="item.right.uploading">
+                            <span style="width: 20%;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="desc">{{item.right.desc}}</div>
             </div>
         </div>
     </div>

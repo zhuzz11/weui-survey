@@ -41,7 +41,7 @@ angular.module("ctApp")
 				}, ], [{
 					label: '取消',
 					onClick: function() {
-						$("#type-text").text('根据现场情况选择');
+						
 					}
 				}], {
 					className: 'custom-classname'

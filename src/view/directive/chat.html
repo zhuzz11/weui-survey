@@ -29,7 +29,7 @@
         </div>
         <div class="chat-footer">
             <span class="msg-type" ng-class="{'keyboard-type':!textChat}" ng-click="changeChatType()"></span>
-            <input type="text" class="text-input" ng-model="textValue" ng-show="textChat" />
+            <textarea type="text" class="text-input" ng-model="textValue" ng-show="textChat" placeholder="请输入您想说的话"></textarea>
             <input type="button" class="voice-input" ng-show="!textChat" value="按住 说话" ng-active="showTip()" ng-inactive="hideTip()" />
             <a class="msg-send-btn" ng-click="send()" ng-show="textChat">发送</a>
         </div>

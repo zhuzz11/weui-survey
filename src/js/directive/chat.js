@@ -49,6 +49,11 @@ angular.module('ctApp')
                     text: "你做的很好你看这个怎么样你看这个怎么样你看这个怎么样你看这个怎么样你看这个怎么样你看这个怎么样你看这个怎么样",
                     time: "09-21 09:24"
                 }, {
+                    userType: 2,
+                    msgType: 1,
+                    text: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    time: "09-21 09:24"
+                }, {
                     userType: 1,
                     msgType: 2,
                     text: "",
@@ -121,7 +126,7 @@ angular.module('ctApp')
                 scope.changeChatType = function() {
                     scope.textChat = !scope.textChat;
                     return;
-                    if (scope.textChat) {//切换录音，首先要用户授权
+                    if (scope.textChat) { //切换录音，首先要用户授权
                         if (!localStorage.rainAllowRecord || localStorage.rainAllowRecord !== 'true') {
                             wx.startRecord({
                                 success: function() {
@@ -132,14 +137,14 @@ angular.module('ctApp')
                                 cancel: function() {
                                     scope.textChat = true;
                                 },
-                                fail: function(){
+                                fail: function() {
                                     scope.textChat = false;
                                     scope.$apply();
                                     alert("录音目前不可用");
                                 }
                             });
                         }
-                    }else{
+                    } else {
                         scope.textChat = !scope.textChat;
                     }
                 };
@@ -157,6 +162,7 @@ angular.module('ctApp')
                         });
                         scope.textValue = "";
                         $(".text-input").focus();
+                        $(".text-input").css("height","20px");
                         setTimeout(function() {
                             $('.chat-content').scrollTop(100000);
                         }, 100);
@@ -166,20 +172,21 @@ angular.module('ctApp')
 
                 };
 
-                var t,t2;
+                var t, t2;
                 var loading = null;
                 var cancelTimeout = function() {
                     if (t) {
                         clearTimeout(t);
                         t = null;
                     }
-                    if(t2){
+                    if (t2) {
                         clearInterval(t2);
                         t2 = null;
                     }
                 };
 
-                var voiceId = null, voiceSecond = 0;
+                var voiceId = null,
+                    voiceSecond = 0;
                 $(".voice-input")[0].addEventListener('touchstart', function(e) {
                     voiceId = null;
                     voiceSecond = 0;
@@ -195,7 +202,7 @@ angular.module('ctApp')
                         //这里开始录音
                         voiceId = "555";
                         t2 = setInterval(function() {
-                           voiceSecond ++;
+                            voiceSecond++;
                         }, 1000);
                     }, 500);
                     e.preventDefault();
@@ -231,6 +238,11 @@ angular.module('ctApp')
                 scope.playVoice = function(id) {
                     alert("播放语音" + id);
                 };
+
+
+                $(".text-input").bind("keydown keyup", function() {
+                    $(this).autosize();
+                }).show();
             }
         };
     }]);

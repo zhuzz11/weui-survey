@@ -1,5 +1,5 @@
 angular.module('ctApp')
-    .directive("chat", ["$apis", function(confirmService) {
+    .directive("chat", ["$apis", "$timeout", function($apis,$timeout) {
         return {
             restrict: "E",
             replace: true,
@@ -31,8 +31,12 @@ angular.module('ctApp')
                 };
 
                 scope.closeChat = function() {
-                    scope.onChat = false;
                     $(".survey-page").css("position","initial");
+                    $(".chat-box").addClass("weui-animate-slide-down");
+                    $timeout(function() {
+                        scope.onChat = false;
+                        $(".chat-box").removeClass("weui-animate-slide-down");
+                    }, 300);
                 };
 
                 var websocket = null;
@@ -115,7 +119,6 @@ angular.module('ctApp')
                 //发送消息
                 scope.send = function() {
                     if (scope.textValue) {
-
                         scope.chatRecords.push({
                             userType: 1,
                             msgType: 1,
@@ -123,15 +126,12 @@ angular.module('ctApp')
                             time: new Date().format("MM-dd hh:mm")
                         });
                         scope.textValue = "";
-                        $(".text-input").focus();
                         $(".text-input").css("height", "20px");
                         setTimeout(function() {
                             $('.chat-content').scrollTop(100000);
                         }, 100);
-                    } else {
-                        alert("请输入内容");
                     }
-
+                    $(".text-input").focus();
                 };
 
                 var t, t2;
@@ -189,7 +189,9 @@ angular.module('ctApp')
                     setTimeout(function() {
                         $('.chat-content').scrollTop(100000);
                     }, 100);
-                    loading.hide();
+                    if(loading){
+                        loading.hide();
+                    }
                     $(this).val("按住 说话");
                     console.log("touch end");
                     e.preventDefault();

@@ -1,5 +1,5 @@
 angular.module('ctApp')
-    .directive("chat", ["$apis", "$timeout", function($apis,$timeout) {
+    .directive("chat", ["$apis", "$timeout", function($apis, $timeout) {
         return {
             restrict: "E",
             replace: true,
@@ -21,27 +21,27 @@ angular.module('ctApp')
                     voiceSecond: 12,
                     time: "09-21 09:24"
                 }];*/
-
                 scope.openChat = function() {
                     scope.onChat = true;
                     setTimeout(function() {
                         $('.chat-content').scrollTop(100000);
                     }, 100);
-                    $(".survey-page").css("position","fixed");//防止聊天框滚动到上下边界后带动底部页面继续滚动
+                    $("body").css("overflow","hidden");//防止聊天框滚动到上下边界后带动底部页面继续滚动
+                    $("html").css("overflow","hidden");
                 };
 
                 scope.closeChat = function() {
-                    $(".survey-page").css("position","initial");
+                    $("body").css("overflow","auto");
+                    $("html").css("overflow","auto");
                     $(".chat-box").addClass("weui-animate-slide-down");
                     $timeout(function() {
                         scope.onChat = false;
                         $(".chat-box").removeClass("weui-animate-slide-down");
-                    }, 300);
+                    }, 350);
                 };
 
-                var websocket = null;
-
-                /*//判断当前浏览器是否支持WebSocket
+                /*var websocket = null;
+                //判断当前浏览器是否支持WebSocket
                 if ('WebSocket' in window) {
                     websocket = new WebSocket("ws://10.104.9.104:8080/endpointChat");
                 } else {
@@ -189,7 +189,7 @@ angular.module('ctApp')
                     setTimeout(function() {
                         $('.chat-content').scrollTop(100000);
                     }, 100);
-                    if(loading){
+                    if (loading) {
                         loading.hide();
                     }
                     $(this).val("按住 说话");

@@ -58,34 +58,38 @@ angular.module("ctApp")
 					process: {
 						width: "20%"
 					}, //进度
-					uploaded: false
+					uploaded: false,
+					auditPass: true,//审核是否通过
+					auditReturn: ""//退回原因
 				},
 				right: {
-					desc: "车辆损失部位", //描述
-					descPhotoUrl: "images/car.png", //描述图片地址
-					uploading: false,
+					desc: "车辆损失部位",
+					descPhotoUrl: "images/car.png",
+					uploading: true,
 					process: {
 						width: "0%"
-					}, //进度
-					uploaded: false
+					},
+					uploaded: false,
+					auditPass: false,
+					auditReturn: "“碰撞物体”拍摄不清晰，请重新拍摄上传"
 				}
 			}, {
 				left: {
-					desc: "碰撞物体", //描述
-					descPhotoUrl: "images/car.png", //描述图片地址
+					desc: "碰撞物体",
+					descPhotoUrl: "images/car.png",
 					uploading: true,
 					process: {
 						width: "40%"
-					}, //进度
+					},
 					uploaded: false
 				},
 				right: {
-					desc: "车架号", //描述
-					descPhotoUrl: "images/car.png", //描述图片地址
+					desc: "车架号",
+					descPhotoUrl: "images/car.png",
 					uploading: false,
 					process: {
 						width: "0%"
-					}, //进度
+					},
 					uploaded: false
 				}
 			}];
@@ -101,5 +105,18 @@ angular.module("ctApp")
 				}
 				$scope.surveyPhoto[0].left.process.width = width + 20 + "%";
 			},1000);
+
+
+			var t2 = $interval(function(){
+				var width = parseInt($scope.surveyPhoto[0].right.process.width);
+				if(width >= 100){
+					$interval.cancel(t2);
+					t2 = null;
+					$scope.surveyPhoto[0].right.uploaded = true;
+					$scope.surveyPhoto[0].right.uploading = false;
+					return;
+				}
+				$scope.surveyPhoto[0].right.process.width = width + 10 + "%";
+			},1200);
 		}
 	]);

@@ -17,6 +17,7 @@
             right: 10px;
             top: 4px;
             background: url("../images/close.png") no-repeat 0 0;
+            background-size: cover;
         }
         .second {
             font-size: 14px;
@@ -68,8 +69,8 @@
                     border-right: 1px solid transparent;
                     border-radius: 5px;
                     width: 60%;
-				    margin: 0 auto;
-				    margin-top: 30%;
+                    margin: 0 auto;
+                    margin-top: 30%;
                 }
                 .progress > span {
                     position: relative;
@@ -125,6 +126,16 @@
         padding: 0 1rem;
         margin-top: 1rem;
         margin-bottom: 2rem;
+        .weui-btn_primary {
+            background-color: #21B6FF;
+            &:not(.weui-btn_disabled):active {
+                color: rgba(255, 255, 255, 0.6);
+                background-color: rgba(25, 156, 232, 0.6);
+            }
+        }
+        .weui-btn_disabled.weui-btn_primary {
+            background-color: #92DBFF;
+        }
     }
 }
 

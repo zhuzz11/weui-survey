@@ -4,7 +4,8 @@ angular.module("ctApp")
 		"$state",
 		"$apis",
 		"$timeout",
-		function($scope, $state, $apis, $timeout) {
+		"$interval",
+		function($scope, $state, $apis, $timeout, $interval) {
 
 			$scope.closeTip = function() {
 				$(".photo-tip").fadeOut();
@@ -54,14 +55,18 @@ angular.module("ctApp")
 					desc: "全车45含清晰车牌照", //描述
 					descPhotoUrl: "images/car.png", //描述图片地址
 					uploading: true,
-					process: 0, //进度
+					process: {
+						width: "20%"
+					}, //进度
 					uploaded: false
 				},
 				right: {
 					desc: "车辆损失部位", //描述
 					descPhotoUrl: "images/car.png", //描述图片地址
 					uploading: false,
-					process: 0, //进度
+					process: {
+						width: "0%"
+					}, //进度
 					uploaded: false
 				}
 			}, {
@@ -69,16 +74,32 @@ angular.module("ctApp")
 					desc: "碰撞物体", //描述
 					descPhotoUrl: "images/car.png", //描述图片地址
 					uploading: true,
-					process: 0, //进度
+					process: {
+						width: "40%"
+					}, //进度
 					uploaded: false
 				},
 				right: {
 					desc: "车架号", //描述
 					descPhotoUrl: "images/car.png", //描述图片地址
 					uploading: false,
-					process: 0, //进度
+					process: {
+						width: "0%"
+					}, //进度
 					uploaded: false
 				}
 			}];
+
+			var t = $interval(function(){
+				var width = parseInt($scope.surveyPhoto[0].left.process.width);
+				if(width >= 100){
+					$interval.cancel(t);
+					t = null;
+					$scope.surveyPhoto[0].left.uploaded = true;
+					$scope.surveyPhoto[0].left.uploading = false;
+					return;
+				}
+				$scope.surveyPhoto[0].left.process.width = width + 20 + "%";
+			},1000);
 		}
 	]);

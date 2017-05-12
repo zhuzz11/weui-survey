@@ -34,15 +34,33 @@
         padding-top: .5rem;
         padding-bottom: 1rem;
         background-color: #fff;
+        .survey-grids {
+            position: relative;
+            overflow: hidden;
+            .survey-grid {
+                position: relative;
+                float: left;
+                padding: 6px;
+                width: 50%;
+                box-sizing: border-box;
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+                &:nth-child(odd) {
+                    padding-left: 15px;
+                    padding-right: 9px;
+                }
+                &:nth-child(even) {
+                    padding-left: 9px;
+                    padding-right: 15px;
+                }
+            }
+        }
     }
-    .photo-title {
-        font-size: 14px;
-        margin-left: 10px;
-    }
-    .weui-flex__item {
+    .survey-grid-body {
         border: 1px solid #ddd;
-        margin: 6px 15px;
-        div {
+        .img-box {
             position: relative;
             .mask {
                 position: absolute;
@@ -106,10 +124,6 @@
                 }
             }
         }
-        img {
-            width: 100%;
-            height: auto;
-        }
         .desc {
             text-align: center;
             font-size: 12px;
@@ -117,11 +131,9 @@
             margin: 5px 0;
         }
     }
-    .weui-flex__item.left {
-        margin-right: 9px;
-    }
-    .weui-flex__item.right {
-        margin-left: 9px;
+    .photo-title {
+        font-size: 14px;
+        margin-left: 10px;
     }
     .button-area {
         padding: 0 1rem;

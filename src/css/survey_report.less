@@ -8,9 +8,9 @@
         border-bottom: 1px solid #ddd;
     }
     .report-body {
-        margin: 12px 20px;
+        margin: 12px 12px 5px 12px;
         padding-bottom: 10px;
-        border-bottom: 1px dashed #ddd;
+        border-bottom: 2px dashed #ddd;
     }
     .item {
         height: 26px;
@@ -35,7 +35,7 @@
         }
     }
     .report-msg {
-        margin: 5px 16px;
+        margin: 5px 12px;
         background-color: #F3EDD3;
         color: #333;
         padding: 10px;
@@ -50,7 +50,7 @@
         text-indent: 2em;
     }
     .report-btn-area {
-        padding: 20px;
+        padding: 20px 12px;
         .report-btn-phone {
             width: 20px;
             height: 20px;
@@ -68,5 +68,59 @@
     &:not(.weui-btn_disabled):active {
         color: rgba(255, 255, 255, 0.6);
         background-color: rgba(25, 156, 232, 0.6);
+    }
+}
+
+.evaluate-box {
+    position: fixed;
+    z-index: 550;
+    width: 80%;
+    max-width: 300px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    text-align: left;
+    border-radius: 3px;
+    overflow: hidden;
+    padding-top: 14px;
+    .evaluate-title {
+        margin-left: 20px;
+        font-size: 16px;
+        color: #333;
+    }
+    .evaluate-star-box {
+        padding-left: 30px;
+        margin-top: 10px;
+    }
+    .evaluate-star {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        background: url("../images/star.png") no-repeat;
+        background-size: 100%;
+    }
+    .evaluate-star-check {
+        background: url("../images/star2.png") no-repeat;
+        background-size: 100%;
+    }
+    .evaluate-input {
+        padding: 0 20px;
+        textarea {
+            width: 100%;
+            height: 100px;
+            outline: 0;
+            resize: none;
+            border: none;
+            background-color: #F2F2F2;
+            padding: 10px;
+            font-size: 14px;
+            line-height: 20px;
+            box-sizing: border-box;
+        }
+    }
+    .evaluate-btn-area{
+    	text-align: center;
     }
 }

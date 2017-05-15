@@ -31,7 +31,38 @@ angular.module("ctApp")
 			},{
 				url:"images/car.png",
 				name:""
-			}]
+			}];
 
+			$scope.showEvaluate = false;
+			$scope.openEvaluate = function(){
+				$scope.showEvaluate = true;
+			};
+
+			$scope.score = 0;
+			$scope.eva = {
+				text: ""
+			}
+			$scope.evaluateScore = function(score){
+				$scope.score = score;
+			};
+			$scope.cancel = function(){
+				$scope.score = 0;
+				$scope.eva.text = "";
+				$scope.showEvaluate = false;
+			};
+
+			$scope.submitScore = function(){
+				if($scope.score < 1){
+					weui.topTips("请评分");
+					return;
+				}
+				if($scope.eva.text.trim() == ""){
+					weui.topTips("请输入评价信息");
+					return;
+				}
+				$scope.score = 0;
+				$scope.eva.text = "";
+				$scope.showEvaluate = false;
+			};
 		}
 	]);

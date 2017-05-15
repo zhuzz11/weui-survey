@@ -34,7 +34,28 @@
         <div class="report-msg-content">您的车牌号为{{report.carNo}}现场自助查勘已经完成，稍后微信通知你案件理赔进度，现在您可离开现场。</div>
     </div>
     <div class="report-btn-area">
-    	<a href="javascript:;" class="weui-btn weui-btn_primary" ng-click="submit()">确定</a>
+    	<a href="javascript:;" class="weui-btn weui-btn_primary" ng-click="openEvaluate()">确定</a>
     	<a href="tel:18565767510" class="weui-btn weui-btn_default weui-btn_loading" ng-click="addPhoto()"><i class="report-btn-phone"></i>我有疑问</a>
     </div>
+    <div ng-if="showEvaluate">
+		<div class="page_mask" ng-click="hideReason()"></div>
+	    <div class="evaluate-box">
+	    	<div class="evaluate-title">请对我们的服务评价</div>
+	        <div class="evaluate-star-box">
+	            <span class="evaluate-star" ng-class="{'evaluate-star-check':score > 0}" ng-click="evaluateScore(1)"></span>
+	            <span class="evaluate-star" ng-class="{'evaluate-star-check':score > 1}" ng-click="evaluateScore(2)"></span>
+	            <span class="evaluate-star" ng-class="{'evaluate-star-check':score > 2}" ng-click="evaluateScore(3)"></span>
+	            <span class="evaluate-star" ng-class="{'evaluate-star-check':score > 3}" ng-click="evaluateScore(4)"></span>
+	            <span class="evaluate-star" ng-class="{'evaluate-star-check':score > 4}" ng-click="evaluateScore(5)"></span>
+	        </div>
+	        <div class="evaluate-input">
+	        	<textarea placeholder="请输入点评信息" ng-model="eva.text"></textarea>
+	        </div>
+	        <div class="weui-dialog__ft evaluate-btn-area">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" ng-click="cancel()">取消</a>
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" ng-click="submitScore()">确定</a>
+                </div>
+	    </div>
+	</div>
 </div>
+<!--评价-->

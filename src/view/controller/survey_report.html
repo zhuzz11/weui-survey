@@ -1,0 +1,40 @@
+<div ng-controller="surveyReport" class="survey-report">
+    <div class="report-title">查勘报告</div>
+    <div class="report-body">
+        <div class="item">
+            <div class="item-title">报案号：</div>
+            <div class="item-text">{{report.caseNo}}</div>
+        </div>
+        <div class="item">
+            <div class="item-title">车牌号码：</div>
+            <div class="item-text">{{report.carNo}}</div>
+        </div>
+        <div class="item">
+            <div class="item-title">驾驶员姓名：</div>
+            <div class="item-text">{{report.driverName}}</div>
+        </div>
+        <div class="item">
+            <div class="item-title">驾驶员电话：</div>
+            <div class="item-text">{{report.driverMobile}}</div>
+        </div>
+        <div class="item">
+            <div class="item-title">出险情况：</div>
+            <div class="item-text">{{report.condition}}</div>
+        </div>
+        <div class="item">
+            <div class="item-title">事故责任：</div>
+            <div class="item-text">{{report.accidentDuty}}</div>
+        </div>
+    </div>
+    <div class="img-box">
+        <img ng-src="{{item.url}}" ng-repeat="item in imgList">
+    </div>
+    <div class="report-msg">
+        <div class="report-msg-wh">尊敬的客户，您好：</div>
+        <div class="report-msg-content">您的车牌号为{{report.carNo}}现场自助查勘已经完成，稍后微信通知你案件理赔进度，现在您可离开现场。</div>
+    </div>
+    <div class="report-btn-area">
+    	<a href="javascript:;" class="weui-btn weui-btn_primary" ng-click="submit()">确定</a>
+    	<a href="tel:18565767510" class="weui-btn weui-btn_default weui-btn_loading" ng-click="addPhoto()"><i class="report-btn-phone"></i>我有疑问</a>
+    </div>
+</div>

@@ -30,6 +30,13 @@ angular.module("ctApp").config(["$stateProvider", "$urlRouterProvider", "$locati
             templateUrl: 'view/controller/survey.html'
         });
     $stateProvider
+        .state('surveyReport', {
+            cache: false,
+            url: '/report',
+            title: "自助查勘报告",
+            templateUrl: 'view/controller/survey_report.html'
+        });
+    $stateProvider
         .state('route', {
             cache: false,
             url: '/route',

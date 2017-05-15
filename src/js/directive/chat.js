@@ -34,11 +34,12 @@ angular.module('ctApp')
                 scope.closeChat = function() {
                     $("body").css("overflow", "auto");
                     $("html").css("overflow", "auto");
+                    $(".page_mask").addClass("weui-animate-fade-out");
                     $(".chat-box").addClass("weui-animate-slide-down");
                     $timeout(function() {
                         scope.onChat = false;
                         $(".chat-box").removeClass("weui-animate-slide-down");
-                    }, 300);
+                    }, 350);
                 };
 
                 /*var websocket = null;

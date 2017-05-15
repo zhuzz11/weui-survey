@@ -46,6 +46,7 @@
                 img {
                     width: 100%;
                     height: auto;
+                    vertical-align: middle;
                 }
                 &:nth-child(odd) {
                     padding-left: 15px;
@@ -62,6 +63,40 @@
         border: 1px solid #ddd;
         .img-box {
             position: relative;
+            .text-layer{
+                position: absolute;
+                width: 60px;
+                height: 20px;
+                line-height: 20px;
+                top: 50%;
+                left: 50%;
+                margin-top: -10px;
+                margin-left: -30px;
+                background-color: rgba(0, 0, 0, 0.95);
+                opacity: 0.6;
+                color: #fff;
+                font-size: 12px;
+                border-radius: 15px;
+                text-align: center;
+            }
+            .audit-state{
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                top: 50%;
+                left: 50%;
+                margin-top: -25px;
+                margin-left: -25px;
+
+            }
+            .audit-success{
+                background: url("../images/audit-success.png");
+                background-size: contain;
+            }
+            .audit-fail{
+                background: url("../images/audit-fail.png");
+                background-size: contain;
+            }
             .mask {
                 position: absolute;
                 width: 100%;
@@ -148,6 +183,49 @@
         }
         .weui-btn_disabled.weui-btn_primary {
             background-color: #92DBFF;
+        }
+    }
+    .re-capture-box{
+        position: fixed;
+        z-index: 550;
+        width: 80%;
+        max-width: 300px;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        background-color: #FFFFFF;
+        text-align: center;
+        border-radius: 3px;
+        overflow: hidden;
+        padding: 14px 0;
+        .img-box{
+            padding: 0 14px;
+        }
+        img{
+            width: 100%;
+            height: auto;
+            vertical-align: middle;
+        }
+        .desc{
+            text-align: left;
+            font-size: 12px;
+            color: #666;
+            padding: 0 14px;
+            margin-top: 5px;
+        }
+        .weui-btn_primary {
+            background-color: #21B6FF;
+            &:not(.weui-btn_disabled):active {
+                color: rgba(255, 255, 255, 0.6);
+                background-color: rgba(25, 156, 232, 0.6);
+            }
+        }
+        .re-capture-btn-area{
+            padding: 0 14px;
+        }
+        .re-capture-btn{
+            margin-top: 20px;
         }
     }
 }

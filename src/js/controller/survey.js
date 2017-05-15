@@ -58,7 +58,7 @@ angular.module("ctApp")
 					width: "20%"
 				}, //进度
 				uploaded: false,
-				auditPass: true, //审核是否通过
+				auditState: "-1",//0待审核 1,审核通过  2审核不通过
 				auditReturn: "" //退回原因
 			}, {
 				desc: "车辆损失部位",
@@ -68,9 +68,8 @@ angular.module("ctApp")
 					width: "0%"
 				},
 				uploaded: false,
-				auditPass: false,
+				auditState: "-1",
 				auditReturn: "“碰撞物体”拍摄不清晰，请重新拍摄上传"
-
 			}, {
 				desc: "碰撞物体",
 				descPhotoUrl: "images/car.png",
@@ -78,7 +77,9 @@ angular.module("ctApp")
 				process: {
 					width: "40%"
 				},
-				uploaded: false
+				uploaded: false,
+				auditState: "-1",
+				auditReturn: ""
 			}, {
 				desc: "车架号",
 				descPhotoUrl: "images/car.png",
@@ -86,7 +87,9 @@ angular.module("ctApp")
 				process: {
 					width: "0%"
 				},
-				uploaded: false
+				uploaded: false,
+				auditState: "-1",
+				auditReturn: ""
 			}];
 
 			$scope.certPhoto = [{
@@ -136,6 +139,8 @@ angular.module("ctApp")
 				uploaded: false
 			}];
 
+			$scope.reshootPhoto = [];//补拍照片集合
+
 			var t = $interval(function() {
 				var width = parseInt($scope.surveyPhoto[0].process.width);
 				if (width >= 100) {
@@ -143,6 +148,10 @@ angular.module("ctApp")
 					t = null;
 					$scope.surveyPhoto[0].uploaded = true;
 					$scope.surveyPhoto[0].uploading = false;
+					$scope.surveyPhoto[0].auditState = 0;
+					$timeout(function(){
+						$scope.surveyPhoto[0].auditState = 1;
+					},3000);
 					return;
 				}
 				$scope.surveyPhoto[0].process.width = width + 20 + "%";
@@ -156,9 +165,25 @@ angular.module("ctApp")
 					t2 = null;
 					$scope.surveyPhoto[1].uploaded = true;
 					$scope.surveyPhoto[1].uploading = false;
+					$scope.surveyPhoto[1].auditState = 0;
+					$timeout(function(){
+						$scope.surveyPhoto[1].auditState = 2;
+					},3000);
 					return;
 				}
 				$scope.surveyPhoto[1].process.width = width + 10 + "%";
 			}, 1200);
+
+			$scope.reasonShowed = false;
+			$scope.failedPhoto = null;
+			$scope.showReason = function(item){
+				$scope.reasonShowed = true;
+				$scope.failedPhoto = item;
+			};
+
+			$scope.hideReason = function(item){
+				$scope.reasonShowed = false;
+				
+			};
 		}
 	]);

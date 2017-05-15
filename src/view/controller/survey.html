@@ -24,6 +24,11 @@
                                 <span ng-style="item.process"></span>
                             </div>
                         </div>
+                        <div class="text-layer" ng-if="item.auditState == 0">
+                            待审核
+                        </div>
+                        <div class="audit-state audit-success" ng-if="item.auditState == 1"></div>
+                        <div class="audit-state audit-fail" ng-if="item.auditState == 2" ng-click="showReason(item)"></div>
                     </div>
                     <div class="desc">{{item.desc}}</div>
                 </div>
@@ -50,9 +55,41 @@
             </div>
         </div>
     </div>
+
+    <div class="survey-card" ng-if="reshootPhoto.length > 0">
+        <div class="photo-title">补拍照片</div>
+        <div class="survey-grids">
+            <div class="survey-grid" ng-repeat="item in reshootPhoto">
+                <div class="survey-grid-body">
+                    <div class="img-box">
+                        <img ng-src="{{item.descPhotoUrl}}">
+                        <div class="mask" ng-if="!item.uploaded">
+                            <span class="take-photo" ng-if="!item.uploading"></span>
+                            <div class="progress" ng-if="item.uploading">
+                                <span ng-style="item.process"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desc">{{item.desc}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="button-area">
         <a href="javascript:;" class="weui-btn weui-btn_primary" ng-class="{'weui-btn_disabled':!needMorePhoto,'weui-btn_primary':needMorePhoto}">已拍完，需补拍</a>
     </div>
     <!--聊天directive-->
     <chat></chat>
+    <div ng-if="reasonShowed">
+        <div class="page_mask" ng-click="hideReason()"></div>
+        <div class="re-capture-box">
+            <div class="img-box">
+                <img ng-src="{{failedPhoto.descPhotoUrl}}">
+            </div>
+            <div class="desc">{{failedPhoto.auditReturn}}</div>
+            <div class="re-capture-btn-area">
+                <a href="javascript:;" class="weui-btn weui-btn_primary re-capture-btn">重新拍照</a>
+            </div>
+        </div>
+    </div>
 </div>

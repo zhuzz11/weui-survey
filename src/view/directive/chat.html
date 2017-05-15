@@ -1,6 +1,8 @@
 <div>
-    <div class="slide_logo" ng-show="!onChat">
-        <div class="default_cmt" ng-click="openChat()"></div>
+    <div class="slide_logo" ng-show="!onChat" ng-click="openChat()">
+        <div class="default_cmt"></div>
+        <div class="msg-count" ng-if="unReadMsgCount > 0">{{unReadMsgCount}}</div>
+        <div class="real-msg" ng-if="newestMsg">{{newestMsg}}</div>
     </div>
     <div class="chat-box weui-animate-slide-up" ng-show="onChat">
         <div class="chat-header">
@@ -35,6 +37,5 @@
             <a class="msg-send-btn" ng-click="send()" ng-show="textChat">发送</a>
         </div>
     </div>
-    <div class="page_mask" ng-show="onChat">
-    </div>
+    <div class="page_mask" ng-show="onChat"></div>
 </div>

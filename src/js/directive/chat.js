@@ -22,22 +22,23 @@ angular.module('ctApp')
                     time: "09-21 09:24"
                 }];*/
                 scope.openChat = function() {
+                    resetMsg();
                     scope.onChat = true;
                     setTimeout(function() {
                         $('.chat-content').scrollTop(100000);
                     }, 100);
-                    $("body").css("overflow","hidden");//防止聊天框滚动到上下边界后带动底部页面继续滚动
-                    $("html").css("overflow","hidden");
+                    $("body").css("overflow", "hidden"); //防止聊天框滚动到上下边界后带动底部页面继续滚动
+                    $("html").css("overflow", "hidden");
                 };
 
                 scope.closeChat = function() {
-                    $("body").css("overflow","auto");
-                    $("html").css("overflow","auto");
+                    $("body").css("overflow", "auto");
+                    $("html").css("overflow", "auto");
                     $(".chat-box").addClass("weui-animate-slide-down");
                     $timeout(function() {
                         scope.onChat = false;
                         $(".chat-box").removeClass("weui-animate-slide-down");
-                    }, 350);
+                    }, 300);
                 };
 
                 /*var websocket = null;
@@ -207,7 +208,25 @@ angular.module('ctApp')
                     $(this).autosize();
                 }).show();
 
+                scope.unReadMsgCount = 0;
+                scope.newestMsg = "";
 
+                $timeout(function() {
+                    scope.chatRecords.push({
+                        userType: 2, //1、自己，2、专家
+                        msgType: 1, //1、文本，2、语音
+                        text: "你看这个怎么样",
+                        time: "09-21 09:24"
+                    });
+                    scope.unReadMsgCount++;
+                    scope.newestMsg = "你看这个怎么样";
+                }, 5000);
+
+                //阅读消息后清除
+                var resetMsg = function(){
+                    scope.unReadMsgCount = 0;
+                    scope.newestMsg = "";
+                };
             }
         };
     }]);

@@ -63,6 +63,9 @@ angular.module("ctApp")
 				$scope.score = 0;
 				$scope.eva.text = "";
 				$scope.showEvaluate = false;
+				weui.toast("评价成功",function(){
+					wx.closeWindow();
+				});
 			};
 		}
 	]);

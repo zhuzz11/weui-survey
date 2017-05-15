@@ -58,7 +58,7 @@ angular.module("ctApp")
 					width: "20%"
 				}, //进度
 				uploaded: false,
-				auditState: "-1",//0待审核 1,审核通过  2审核不通过
+				auditState: "-1", //0待审核 1,审核通过  2审核不通过
 				auditReturn: "" //退回原因
 			}, {
 				desc: "车辆损失部位",
@@ -139,7 +139,7 @@ angular.module("ctApp")
 				uploaded: false
 			}];
 
-			$scope.reshootPhoto = [];//补拍照片集合
+			$scope.reshootPhoto = []; //补拍照片集合
 
 			var t = $interval(function() {
 				var width = parseInt($scope.surveyPhoto[0].process.width);
@@ -149,9 +149,9 @@ angular.module("ctApp")
 					$scope.surveyPhoto[0].uploaded = true;
 					$scope.surveyPhoto[0].uploading = false;
 					$scope.surveyPhoto[0].auditState = 0;
-					$timeout(function(){
+					$timeout(function() {
 						$scope.surveyPhoto[0].auditState = 1;
-					},3000);
+					}, 3000);
 					return;
 				}
 				$scope.surveyPhoto[0].process.width = width + 20 + "%";
@@ -166,9 +166,9 @@ angular.module("ctApp")
 					$scope.surveyPhoto[1].uploaded = true;
 					$scope.surveyPhoto[1].uploading = false;
 					$scope.surveyPhoto[1].auditState = 0;
-					$timeout(function(){
+					$timeout(function() {
 						$scope.surveyPhoto[1].auditState = 2;
-					},3000);
+					}, 3000);
 					return;
 				}
 				$scope.surveyPhoto[1].process.width = width + 10 + "%";
@@ -176,14 +176,29 @@ angular.module("ctApp")
 
 			$scope.reasonShowed = false;
 			$scope.failedPhoto = null;
-			$scope.showReason = function(item){
+			$scope.showReason = function(item) {
 				$scope.reasonShowed = true;
 				$scope.failedPhoto = item;
 			};
 
-			$scope.hideReason = function(item){
+			$scope.hideReason = function(item) {
 				$scope.reasonShowed = false;
-				
+
+			};
+
+
+			$scope.addPhoto = function() {
+				$scope.reshootPhoto.push({
+					desc: "补拍照片" + ($scope.reshootPhoto.length + 1), //描述
+					descPhotoUrl: "images/cert.png", //描述图片地址
+					uploading: true,
+					process: {
+						width: "20%"
+					}, //进度
+					uploaded: false,
+					auditPass: true, //审核是否通过
+					auditReturn: "" //退回原因
+				});
 			};
 		}
 	]);

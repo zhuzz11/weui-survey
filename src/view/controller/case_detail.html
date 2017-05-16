@@ -1,0 +1,59 @@
+<div ng-controller="caseDetail" class="case-detail">
+	<div class="title">案件详情</div>
+	<div class="case">
+	    <div class="case-body">
+	    	<div class="item">
+	            <div class="item-title car-no">{{report.carNo}}</div>
+	        </div>
+	        <div class="item">
+	            <div class="item-title">报案号：</div>
+	            <div class="item-text">{{report.caseNo}}</div>
+	        </div>
+	        <div class="item">
+	            <div class="item-title">报案时间：</div>
+	            <div class="item-text-blur">{{report.caseTime}}</div>
+	        </div>
+	        <div class="item">
+	            <div class="item-title">出险地点：</div>
+	            <div class="item-text-blur">{{report.address}}</div>
+	        </div>
+	        <div class="item">
+	            <div class="item-title">出险情况：</div>
+	            <div class="item-text-blur">{{report.condition}}</div>
+	        </div>
+	        <div class="item">
+	            <div class="item-title">事故责任：</div>
+	            <div class="item-text-blur">{{report.accidentDuty}}</div>
+	        </div>
+	    </div>
+    </div>
+    <div class="his-case" ng-if="historyCase.length > 0">历史案件</div>
+    <div class="case" ng-if="historyCase.length > 0">
+    	<div class="case-body" ng-repeat="report in historyCase">
+	    	<div class="item">
+	            <div class="item-title car-no">{{report.carNo}}</div>
+	            <div class="item-text-right">已结案</div>
+	        </div>
+	        <div class="item">
+	            <div class="item-title">报案号：</div>
+	            <div class="item-text">{{report.caseNo}}</div>
+	        </div>
+	        <div class="item">
+	            <div class="item-title">报案时间：</div>
+	            <div class="item-text-blur">{{report.caseTime}}</div>
+	        </div>
+	        <div class="item">
+	            <div class="item-title">出险地点：</div>
+	            <div class="item-text-blur">{{report.address}}</div>
+	        </div>
+	        <div class="item">
+	            <div class="item-title">出险情况：</div>
+	            <div class="item-text-blur">{{report.condition}}</div>
+	        </div>
+	        <div class="item">
+	            <div class="item-title">事故责任：</div>
+	            <div class="item-text-blur">{{report.accidentDuty}}</div>
+	        </div>
+	    </div>
+    </div>
+</div>

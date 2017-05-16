@@ -1,0 +1,56 @@
+/**your common css here**/
+
+.case-detail {
+    .case {
+        background-color: #fff;
+        .case-body {
+        	position: relative;
+            margin: 0 14px;
+            padding: 12px 0;
+            .item {
+                font-size: 14px;
+                display: flex;
+            }
+            .item:first-child {
+                margin-bottom: 5px;
+            }
+            .car-no {
+                font-size: 16px;
+            }
+            .item-title {
+                white-space: nowrap;
+            }
+            .item-text {
+                flex: 1;
+            }
+            .item-text-blur {
+                flex: 1;
+                color: #999999;
+            }
+            .item-text-right {
+                flex: 1;
+                text-align: right;
+                color: #33A5DA;
+            }
+            &:not(:first-child):before{
+            	content: " ";
+			    width: 100%;
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    border-top: 1px solid #ddd;
+			    box-sizing: border-box;
+            }
+        }
+    }
+    .title {
+        padding-top: 20px;
+        font-size: 20px;
+        text-align: center;
+        background-color: #fff;
+    }
+    .his-case {
+        margin: 10px 0 5px 14px;
+        font-size: 14px;
+    }
+}
